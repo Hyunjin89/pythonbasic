@@ -57,4 +57,30 @@ Here's how to use `lambda` functions:
 
    In this example, the lambda function is used as the key to find the student with the highest grade.
 
+   You can use `lambda` functions with the `apply()` method in pandas to apply a custom function to each row or column of a DataFrame. Here's how to use `lambda` with `apply()`:
+
+```python
+import pandas as pd
+
+# Create a sample DataFrame
+data = {'A': [1, 2, 3], 'B': [4, 5, 6]}
+df = pd.DataFrame(data)
+
+# Use lambda with apply to double each element in column 'A'
+df['A_doubled'] = df['A'].apply(lambda x: x * 2)
+
+# Use lambda with apply to sum values in each row
+df['Sum'] = df.apply(lambda row: row['A'] + row['B'], axis=1)
+
+print(df)
+```
+
+In this example:
+
+1. We create a DataFrame `df` with two columns, 'A' and 'B'.
+2. We use `df['A'].apply(lambda x: x * 2)` to apply a lambda function that doubles each element in column 'A' and stores the result in a new column 'A_doubled'.
+3. We use `df.apply(lambda row: row['A'] + row['B'], axis=1)` to apply a lambda function that sums the values in each row (across columns 'A' and 'B') and stores the result in a new column 'Sum'.
+
+The `apply()` method is a powerful way to apply custom operations to pandas DataFrames, and using `lambda` functions with it allows you to define these custom operations concisely.
+
 Lambda functions are simple and handy for short, straightforward operations. However, for more complex functions, it's often better to define a regular named function using `def` for clarity and reusability.
