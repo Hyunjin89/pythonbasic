@@ -1,0 +1,8 @@
+You may get errors like this : 
+
+ValueError: could not convert string to float: 'Your String'
+
+To fix this error, the easiest way is to exclude any non-numerical column(s).
+
+df_heatmap = df.select_dtypes(exclude=[object])
+sns.heatmap(df_heatmap.corr())
